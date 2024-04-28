@@ -1,8 +1,8 @@
-FROM node:18
+FROM node:18.19.1
 
 WORKDIR /usr/app
 
-COPY ./package*.json .
+COPY ./package.json .
 
 # Install requirement package
 RUN npm install
