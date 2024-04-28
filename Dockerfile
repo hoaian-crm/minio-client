@@ -1,7 +1,5 @@
 FROM node:18
 
-ENV PUPPETEER_SKIP_CHROMIUM_DOWNLOAD true
-
 WORKDIR /usr/app
 
 COPY ./package*.json .
