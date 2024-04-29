@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { BucketItem, Client, UploadedObjectInfo } from 'minio';
+import { BucketItem, Client } from 'minio';
 
 @Injectable()
 export class MinioService {
@@ -17,16 +17,8 @@ export class MinioService {
     bucketName: string,
     path?: string,
     data?: Buffer | string,
-  ): Promise<UploadedObjectInfo> {
-    return new Promise((resolve, reject) => {
-      this.client.putObject(bucketName, path, data, (error, etag) => {
-        if (error) {
-          reject(error);
-        } else {
-          resolve(etag);
-        }
-      });
-    });
+  ) {
+    return this.client.putObject(bucketName, path, data)
   }
 
   async readDir(
